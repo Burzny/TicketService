@@ -1,0 +1,27 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Users{% endblock %}
+
+{% block content %}
+
+
+
+<h1>Users</h1>
+<form method="POST" class="form-group">
+    {% csrf_token %}
+
+    {% for user in users %}
+        {% if user.is_staff == True %}
+            <li>Username - {{user}}   email - {{user.email}}   Staff? <input type="checkbox", value="clicked", name="c{{user}}" checked></li>
+        {% else %}
+            <li>Username - {{user}}   email - {{user.email}}   Staff? <input type="checkbox", value="clicked", name="c{{user}}"></li>
+        {% endif %}
+        {% endfor %}
+
+    
+        
+        <p></P>
+        <button type="submit", name="save", value="save">Save</button>
+</form>
+
+{% endblock %}

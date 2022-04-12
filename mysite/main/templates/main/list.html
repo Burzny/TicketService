@@ -1,0 +1,18 @@
+{% extends "main/base.html" %}
+{% block title %}View List{% endblock %}
+
+{% block content %}
+	<h1>{{ls.name}}</h1>
+	<form method="post" action="#">
+	{% csrf_token %}
+	<ul>
+		{% for message in ls.message_set.all %}
+
+			<li>{{message.text}}</li>
+
+		{% endfor %}
+	</ul>
+	<button type="submit", name="newMessage", value="newMessage">Add Message</button>	
+	<input type="text", name="new">
+
+{% endblock %}
