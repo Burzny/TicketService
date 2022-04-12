@@ -10,5 +10,6 @@
 <p>DONE - Account creation</p>
 <p>DONE - Login/Logout</p>
 <p>PENDING - Sending breakdown report via email</p>
-<p>PENDING - Creating ticket</p>
+<p>DONE - Creating ticket</p>
 <p>PENDING - Enabling adding photos</p>
+<p>DONE - User menagement page</p>
