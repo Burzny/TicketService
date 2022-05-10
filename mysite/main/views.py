@@ -34,7 +34,6 @@ def index(response, id):
  
         if len(txt) > 2:
             ls.message_set.create(text=txt) 
-            # message_set to message z modelu danych i set jako grupa
         else:
             print("invalid")
     
@@ -52,7 +51,7 @@ def users(response):
     if response.method == 'POST':
         if response.POST.get('save'):
             for user in users:
-                if response.POST.get('c'+ str(user)) == 'clicked': # nie wchodzi w ten warunek
+                if response.POST.get('c'+ str(user)) == 'clicked':
                     user.is_staff = True
                 else:
                     user.is_staff = False
