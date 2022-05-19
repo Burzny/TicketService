@@ -3,6 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from .forms import CreateNewTicket
 from .models import Ticket, Message
 from django.contrib.auth.models import User
+import datetime
 
 # Create your views here.
 
@@ -33,7 +34,7 @@ def index(response, id):
         txt = response.POST.get("new")
  
         if len(txt) > 2:
-            ls.message_set.create(text=txt) 
+            ls.message_set.create(text=txt, date=datetime.datetime.now()) 
         else:
             print("invalid")
     

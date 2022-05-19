@@ -13,7 +13,9 @@ def __str__(self):
 
 class Message(models.Model):
 	ticket = models.ForeignKey(Ticket, on_delete=models.CASCADE)
-	text = models.CharField(max_length=300)
+	text = models.CharField(max_length=1000)
+	date = models.DateTimeField(null=True, blank=True)
+	user = models.CharField(max_length=200, null=True, blank=True)
 
 	def __str__(self):
 		return self.text

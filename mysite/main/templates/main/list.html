@@ -2,14 +2,20 @@
 {% block title %}View List{% endblock %}
 
 {% block content %}
-	<h1>{{ls.name}}</h1>
+	<h3>{{ls.name}}</h3>
 	<form method="post" action="#">
 	{% csrf_token %}
 	<ul>
 		{% for message in ls.message_set.all %}
+			<div class=box-staff>
+				<li>
+					{{message.user}}:
 
-			<li>{{message.text}}</li>
+					{{message.date}}<br>
+					{{message.text}}
 
+				</li>
+			</div>
 		{% endfor %}
 	</ul>
 	<button type="submit", name="newMessage", value="newMessage">Add Message</button>	
