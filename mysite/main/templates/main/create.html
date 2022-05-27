@@ -4,15 +4,19 @@
 {% endblock %}
 
 {% block content %}
-<h3>Create new ticket</h3>
+<h2>Create new ticket</h2>
 <br>
 <form method="post" action="/create/" class="form-group">
+    {% if user.is_authenticated %}
     {% csrf_token %}
     <div class="input-group mb-3">
           <div class="input-group-prepend">
           <button name="save" type="submit" class="btn btn-success">Create</button>
           </div>
           {{form.name}}
+    {% else %}
+    <h3>You must be log in to create new ticket</h3>
+    {% endif %}
 
     </div>
 </form>

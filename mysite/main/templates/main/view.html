@@ -5,9 +5,19 @@ View
 {% endblock %}
 
 {% block content %}
-    <h1>View your tickets</h1>
+    <h2>View your tickets</h2><br>
+    {% if user.is_authenticated %}
+        {%if user.is_staff %}
+            {% for ticket in tickets %}
+                <li><a href="/{{ticket.id}}">{{ticket.name}}</a></li>
+            {% endfor %}
+        {% else %}
+            {% for ticket in user.ticket.all %}
+                <li><a href="/{{ticket.id}}">{{ticket.name}}</a></li>
+            {% endfor %}
+        {% endif %}
 
-    {% for td in user.ticket.all %}
-        <p><a href="/{{td.id}}">{{td.name}}</a></p>
-    {% endfor %}
+    {% else %}
+    <h3>You must be log in to view tickets</h3>
+    {% endif %}
 {% endblock %}

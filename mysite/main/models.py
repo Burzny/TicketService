@@ -15,7 +15,7 @@ class Message(models.Model):
 	ticket = models.ForeignKey(Ticket, on_delete=models.CASCADE)
 	text = models.CharField(max_length=1000)
 	date = models.DateTimeField(null=True, blank=True)
-	user = models.CharField(max_length=200, null=True, blank=True)
-
+	user = models.ForeignKey(User, on_delete=models.PROTECT, related_name="message", null=True)	
+ 
 	def __str__(self):
 		return self.text

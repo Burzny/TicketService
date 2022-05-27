@@ -11,8 +11,8 @@
 <p>DONE - Login/Logout</p>
 <p>PENDING - Sending breakdown report via email</p>
 <p>DONE - Creating ticket</p>
-<p>PENDING - Messages added by staff</p>
-<p>PENDING - Ticket view page customization</p>
+<p>DONE - Messages added by staff</p>
+<p>DONE - Ticket view page customization</p>
 <p>PENDING - Enabling adding photos</p>
 <p>DONE - User menagement page</p>
 <p>PENDING - User restrictions</p>

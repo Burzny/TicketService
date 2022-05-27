@@ -6,17 +6,23 @@
 
 
 
-<h1>Users</h1>
+<h2>Users</h2>
 <form method="POST" class="form-group">
     {% csrf_token %}
-
-    {% for user in users %}
-        {% if user.is_staff == True %}
-            <li>Username - {{user}}   email - {{user.email}}   Staff? <input type="checkbox", value="clicked", name="c{{user}}" checked></li>
-        {% else %}
-            <li>Username - {{user}}   email - {{user.email}}   Staff? <input type="checkbox", value="clicked", name="c{{user}}"></li>
-        {% endif %}
+    {% if user.is_authenticated %}
+        {% for user in users %}
+            {% if user.is_superuser %}
+            {% else %}
+                {% if user.is_staff == True %}
+                    <li>Username - {{user}}   email - {{user.email}}   Staff? <input type="checkbox", value="clicked", name="c{{user}}" checked></li>
+                {% else %}
+                    <li>Username - {{user}}   email - {{user.email}}   Staff? <input type="checkbox", value="clicked", name="c{{user}}"></li>
+                {% endif %}
+            {% endif %}
         {% endfor %}
+    {% else %}
+        <h3>You must be log in to view tickets</h3>
+    {% endif %}
 
     
         

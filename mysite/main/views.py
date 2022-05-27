@@ -34,7 +34,7 @@ def index(response, id):
         txt = response.POST.get("new")
  
         if len(txt) > 2:
-            ls.message_set.create(text=txt, date=datetime.datetime.now()) 
+            ls.message_set.create(text=txt, date=datetime.datetime.now(), user=response.user) 
         else:
             print("invalid")
     
@@ -42,7 +42,8 @@ def index(response, id):
 
 
 def view(response):
-    return render(response, 'main/view.html', {})
+    tickets = Ticket.objects.all()
+    return render(response, 'main/view.html', {'tickets':tickets})
 def report(response):
     return render(response, 'main/report.html', {})
 

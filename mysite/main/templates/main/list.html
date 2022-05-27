@@ -7,18 +7,26 @@
 	{% csrf_token %}
 	<ul>
 		{% for message in ls.message_set.all %}
+
+			{% if message.user.is_staff %}
 			<div class=box-staff>
-				<li>
-					{{message.user}}:
-
-					{{message.date}}<br>
+			{% else %}
+			<div class=box-user>
+			{% endif %}
+					<p style="text-align:left;">
+						{{message.user}}:
+						<span style="float:right;">
+							{{message.date}} <br>
+						</span>
+					</p>
 					{{message.text}}
-
-				</li>
 			</div>
 		{% endfor %}
 	</ul>
-	<button type="submit", name="newMessage", value="newMessage">Add Message</button>	
-	<input type="text", name="new">
 
+
+	<textarea name="new" cols="90" rows="5"></textarea><br><br>
+	<button type="submit", name="newMessage", value="newMessage">Add Message</button><br><br>
+
+	
 {% endblock %}
